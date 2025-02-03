@@ -1,6 +1,7 @@
 package parte1.ej4;
 
 public class Articulo {
+	// Atributos
 	String nombre;
 	double precio;
 	final double IVA = 21;
