@@ -4,10 +4,7 @@ public class Ej4 {
 
 	public static void main(String[] args) {
 		// Creamos el objeto y modificamos sus atributos
-		Articulo objeto = new Articulo();
-		objeto.nombre = "Sal";
-		objeto.precio = 2;
-		objeto.cuantosQuedan = 6;
+		Articulo objeto = new Articulo("sal", 2, 21, 6);
 
 		// Imprimimos los datos
 		System.out.println(objeto);

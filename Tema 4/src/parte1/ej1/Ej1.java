@@ -4,15 +4,11 @@ public class Ej1 {
 
 	public static void main(String[] args) {
 		// Inicializamos los objetos y sus atributos
-		Punto cc1 = new Punto();
-		cc1.x = 5;
-		cc1.y = 0;
-		Punto cc2 = new Punto();
-		cc2.x = 10;
-		cc2.y = 10;
-		Punto cc3 = new Punto();
-		cc3.x = -3;
-		cc3.y = 7;
+		Punto cc1 = new Punto(5, 0);
+
+		Punto cc2 = new Punto(10, 10);
+
+		Punto cc3 = new Punto(-3, 7);
 
 		// Imprimimos los valores inciales
 		System.out.println(cc1);

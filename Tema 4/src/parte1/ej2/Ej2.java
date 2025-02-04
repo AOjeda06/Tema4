@@ -7,29 +7,33 @@ public class Ej2 {
 	static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// Creamos los objetos y un array para facilitar la introduccion de datos
-		Persona p1 = new Persona();
-		Persona p2 = new Persona();
-		Persona[] personas = { p1, p2 };
+		// Variables
+		String dni;
+		String nombre;
+		String apellidos;
+		int edad;
 
-		// Metemos los datos a los objetos
-		for (int i = 0; i < 2; i++) {
-			System.out.println("Introduce el nombre");
-			personas[i].nombre = scanner.nextLine();
+		// Creamos un array para almacenar las personas
+		Persona[] personas = new Persona[2];
 
-			System.out.println("Introduce los apellidos");
-			personas[i].apellidos = scanner.nextLine();
-
-			System.out.println("Introduce el dni");
-			personas[i].dni = scanner.nextLine();
-
-			System.out.println("Introduce la edad");
-			personas[i].edad = scanner.nextInt();
+		for (int i = 1; i < 3; i++) {
+			System.out.println("DNI: ");
+			dni = scanner.nextLine();
+			System.out.println("NOMBRE: ");
+			nombre = scanner.nextLine();
+			System.out.println("APELLIDOS: ");
+			apellidos = scanner.nextLine();
+			System.out.println("EDAD: ");
+			edad = scanner.nextInt();
 			scanner.nextLine();
+
+			// Creamos el objeto Persona y lo almacenamos en el array
+			personas[i] = new Persona(dni, nombre, apellidos, edad);
 		}
 
 		// Imprimir los objetos Persona
-		System.out.println(p1);
-		System.out.println(p2);
+		for (Persona persona : personas) {
+			System.out.println(persona);
+		}
 	}
 }
