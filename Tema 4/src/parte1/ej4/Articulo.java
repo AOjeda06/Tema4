@@ -1,13 +1,24 @@
 package parte1.ej4;
 
+/**
+ * Clase que representa un artículo con su nombre, precio, IVA y cantidad en
+ * stock.
+ */
 public class Articulo {
-	// Atributos
 	private String nombre;
 	private double precio;
 	private final double IVA;
 	private int cuantosQuedan;
 
-	// Constructor
+	/**
+	 * Constructor que inicializa un artículo con el nombre, precio, IVA y cantidad
+	 * en stock.
+	 * 
+	 * @param nombre        Nombre del artículo.
+	 * @param precio        Precio del artículo.
+	 * @param IVA           Porcentaje de IVA del artículo.
+	 * @param cuantosQuedan Cantidad en stock del artículo.
+	 */
 	public Articulo(String nombre, double precio, double IVA, int cuantosQuedan) {
 		setNombre(nombre);
 		setPrecio(precio);
@@ -15,24 +26,47 @@ public class Articulo {
 		setCuantosQuedan(cuantosQuedan);
 	}
 
-	// Getters
+	/**
+	 * Obtiene el nombre del artículo.
+	 * 
+	 * @return El nombre del artículo.
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Obtiene el precio del artículo.
+	 * 
+	 * @return El precio del artículo.
+	 */
 	public double getPrecio() {
 		return precio;
 	}
 
+	/**
+	 * Obtiene el porcentaje de IVA del artículo.
+	 * 
+	 * @return El porcentaje de IVA del artículo.
+	 */
 	public double getIVA() {
 		return IVA;
 	}
 
+	/**
+	 * Obtiene la cantidad en stock del artículo.
+	 * 
+	 * @return La cantidad en stock del artículo.
+	 */
 	public int getCuantosQuedan() {
 		return cuantosQuedan;
 	}
 
-	// Setters
+	/**
+	 * Establece el nombre del artículo.
+	 * 
+	 * @param nombre El nombre del artículo. No puede estar vacío.
+	 */
 	public void setNombre(String nombre) {
 		if (nombre != null && !nombre.isEmpty()) {
 			this.nombre = nombre;
@@ -41,6 +75,11 @@ public class Articulo {
 		}
 	}
 
+	/**
+	 * Establece el precio del artículo.
+	 * 
+	 * @param precio El precio del artículo. No puede ser negativo.
+	 */
 	public void setPrecio(double precio) {
 		if (precio >= 0) {
 			this.precio = precio;
@@ -49,6 +88,12 @@ public class Articulo {
 		}
 	}
 
+	/**
+	 * Establece la cantidad en stock del artículo.
+	 * 
+	 * @param cuantosQuedan La cantidad en stock del artículo. No puede ser
+	 *                      negativa.
+	 */
 	public void setCuantosQuedan(int cuantosQuedan) {
 		if (cuantosQuedan >= 0) {
 			this.cuantosQuedan = cuantosQuedan;
@@ -57,11 +102,21 @@ public class Articulo {
 		}
 	}
 
-	// Métodos adicionales
+	/**
+	 * Calcula el precio de venta al público (PVP) del artículo con IVA incluido.
+	 * 
+	 * @return El PVP del artículo.
+	 */
 	public double getPVP() {
 		return precio + (precio * (IVA / 100));
 	}
 
+	/**
+	 * Calcula el PVP del artículo aplicando un descuento.
+	 * 
+	 * @param descuento Porcentaje de descuento a aplicar. Debe estar entre 0 y 100.
+	 * @return El PVP del artículo con el descuento aplicado.
+	 */
 	public double getPVPDescuento(double descuento) {
 		if (descuento < 0 || descuento > 100) {
 			throw new IllegalArgumentException("El descuento debe estar entre 0 y 100.");
@@ -69,15 +124,27 @@ public class Articulo {
 		return getPVP() * (1 - descuento / 100);
 	}
 
+	/**
+	 * Vende una cantidad del artículo, reduciendo el stock disponible.
+	 * 
+	 * @param cantidad La cantidad a vender. Debe ser positiva y no mayor que el
+	 *                 stock disponible.
+	 * @return true si la venta fue exitosa, false si no había suficiente stock.
+	 */
 	public boolean vender(int cantidad) {
+		boolean vendido = false;
 		if (cantidad > 0 && cantidad <= cuantosQuedan) {
 			cuantosQuedan -= cantidad;
-			return true;
-		} else {
-			return false;
+			vendido = true;
 		}
+		return vendido;
 	}
 
+	/**
+	 * Almacena una cantidad adicional del artículo, aumentando el stock disponible.
+	 * 
+	 * @param cantidad La cantidad a almacenar. Debe ser positiva.
+	 */
 	public void almacenar(int cantidad) {
 		if (cantidad > 0) {
 			cuantosQuedan += cantidad;
@@ -86,7 +153,6 @@ public class Articulo {
 		}
 	}
 
-	// Override del método toString
 	@Override
 	public String toString() {
 		return "Artículo: " + nombre + " - Precio: " + precio + "€ - IVA: " + IVA + "% - PVP: " + getPVP()
