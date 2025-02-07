@@ -7,13 +7,6 @@ public class Articulo {
 	private final double IVA;
 	private int cuantosQuedan;
 
-	// Override
-	@Override
-	public String toString() {
-		return nombre + " - Precio: " + precio + "€ - IVA: " + IVA + "% - PVP: " + (precio + (precio * (IVA / 100)))
-				+ "€ - Quedan: " + cuantosQuedan;
-	}
-
 	// Constructor
 	public Articulo(String nombre, double precio, double IVA, int cuantosQuedan) {
 		setNombre(nombre);
@@ -62,5 +55,41 @@ public class Articulo {
 		} else {
 			throw new IllegalArgumentException("La cantidad no puede ser negativa.");
 		}
+	}
+
+	// Métodos adicionales
+	public double getPVP() {
+		return precio + (precio * (IVA / 100));
+	}
+
+	public double getPVPDescuento(double descuento) {
+		if (descuento < 0 || descuento > 100) {
+			throw new IllegalArgumentException("El descuento debe estar entre 0 y 100.");
+		}
+		return getPVP() * (1 - descuento / 100);
+	}
+
+	public boolean vender(int cantidad) {
+		if (cantidad > 0 && cantidad <= cuantosQuedan) {
+			cuantosQuedan -= cantidad;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void almacenar(int cantidad) {
+		if (cantidad > 0) {
+			cuantosQuedan += cantidad;
+		} else {
+			throw new IllegalArgumentException("La cantidad a almacenar debe ser positiva.");
+		}
+	}
+
+	// Override del método toString
+	@Override
+	public String toString() {
+		return "Artículo: " + nombre + " - Precio: " + precio + "€ - IVA: " + IVA + "% - PVP: " + getPVP()
+				+ "€ - Quedan: " + cuantosQuedan;
 	}
 }
