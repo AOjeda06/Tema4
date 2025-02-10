@@ -1,5 +1,8 @@
 package parte1.ej3;
 
+/**
+ * Clase que crea una cuenta corriente con los datos personales
+ */
 public class Ej3 {
 
 	public static void main(String[] args) {
