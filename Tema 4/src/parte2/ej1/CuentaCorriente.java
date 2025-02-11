@@ -19,8 +19,15 @@ public class CuentaCorriente {
 	 *
 	 * @param dni   el DNI del titular de la cuenta
 	 * @param saldo el saldo inicial de la cuenta
+	 * @throws IllegalArgumentException si el DNI está vacío o el saldo es negativo
 	 */
 	public CuentaCorriente(String dni, double saldo) {
+		if (dni == null || dni.isEmpty()) {
+			throw new IllegalArgumentException("DNI no puede estar vacío.");
+		}
+		if (saldo < 0) {
+			throw new IllegalArgumentException("Saldo no puede ser negativo.");
+		}
 		this.dni = dni;
 		this.saldo = saldo;
 		this.nacionalidad = nacion.ESPAÑOLA; // Nacionalidad por defecto si no se especifica
@@ -33,8 +40,19 @@ public class CuentaCorriente {
 	 * @param dni    el DNI del titular de la cuenta
 	 * @param nombre el nombre del titular de la cuenta
 	 * @param saldo  el saldo inicial de la cuenta
+	 * @throws IllegalArgumentException si el DNI o el nombre están vacíos o el
+	 *                                  saldo es negativo
 	 */
 	public CuentaCorriente(String dni, String nombre, double saldo) {
+		if (dni == null || dni.isEmpty()) {
+			throw new IllegalArgumentException("DNI no puede estar vacío.");
+		}
+		if (nombre == null || nombre.isEmpty()) {
+			throw new IllegalArgumentException("Nombre no puede estar vacío.");
+		}
+		if (saldo < 0) {
+			throw new IllegalArgumentException("Saldo no puede ser negativo.");
+		}
 		this.dni = dni;
 		this.nombre = nombre;
 		this.saldo = saldo;
@@ -49,8 +67,19 @@ public class CuentaCorriente {
 	 * @param nombre       el nombre del titular de la cuenta
 	 * @param saldo        el saldo inicial de la cuenta
 	 * @param nacionalidad la nacionalidad del titular de la cuenta
+	 * @throws IllegalArgumentException si el DNI o el nombre están vacíos o el
+	 *                                  saldo es negativo
 	 */
 	public CuentaCorriente(String dni, String nombre, double saldo, nacion nacionalidad) {
+		if (dni == null || dni.isEmpty()) {
+			throw new IllegalArgumentException("DNI no puede estar vacío.");
+		}
+		if (nombre == null || nombre.isEmpty()) {
+			throw new IllegalArgumentException("Nombre no puede estar vacío.");
+		}
+		if (saldo < 0) {
+			throw new IllegalArgumentException("Saldo no puede ser negativo.");
+		}
 		this.dni = dni;
 		this.nombre = nombre;
 		this.saldo = saldo;
@@ -72,7 +101,11 @@ public class CuentaCorriente {
 	 * @param dni el DNI del titular de la cuenta
 	 */
 	public void setDni(String dni) {
-		this.dni = dni;
+		if (dni != null && !dni.isEmpty()) {
+			this.dni = dni;
+		} else {
+			throw new IllegalArgumentException("DNI no puede estar vacío.");
+		}
 	}
 
 	/**
@@ -90,7 +123,11 @@ public class CuentaCorriente {
 	 * @param nombre el nombre del titular de la cuenta
 	 */
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		if (nombre != null && !nombre.isEmpty()) {
+			this.nombre = nombre;
+		} else {
+			throw new IllegalArgumentException("Nombre no puede estar vacío.");
+		}
 	}
 
 	/**
@@ -108,7 +145,11 @@ public class CuentaCorriente {
 	 * @param saldo el saldo de la cuenta
 	 */
 	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+		if (saldo >= 0) {
+			this.saldo = saldo;
+		} else {
+			throw new IllegalArgumentException("Saldo no puede ser negativo.");
+		}
 	}
 
 	/**

@@ -36,8 +36,12 @@ public class Pizza {
 	 * @param codigo El código de la pizza.
 	 * @param tamaño El tamaño de la pizza.
 	 * @param tipo   El tipo de la pizza.
+	 * @throws IllegalArgumentException si el código es negativo
 	 */
 	public Pizza(int codigo, tamaños tamaño, tipos tipo) {
+		if (codigo < 0) {
+			throw new IllegalArgumentException("El código no puede ser negativo.");
+		}
 		this.codigo = codigo;
 		this.tamaño = tamaño;
 		this.tipo = tipo;
@@ -57,9 +61,14 @@ public class Pizza {
 	 * Establece el código de la pizza.
 	 * 
 	 * @param codigo El nuevo código de la pizza.
+	 * @throws IllegalArgumentException si el código es negativo
 	 */
 	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+		if (codigo >= 0) {
+			this.codigo = codigo;
+		} else {
+			throw new IllegalArgumentException("El código no puede ser negativo.");
+		}
 	}
 
 	/**
@@ -141,4 +150,5 @@ public class Pizza {
 		}
 		return equivalentes;
 	}
+
 }

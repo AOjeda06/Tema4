@@ -12,8 +12,16 @@ public class Alumno {
 	 * 
 	 * @param nombre El nombre del alumno.
 	 * @param media  La media del alumno.
+	 * @throws IllegalArgumentException si el nombre está vacío o la media es
+	 *                                  negativa
 	 */
 	public Alumno(String nombre, double media) {
+		if (nombre == null || nombre.isEmpty()) {
+			throw new IllegalArgumentException("El nombre no puede estar vacío.");
+		}
+		if (media < 0) {
+			throw new IllegalArgumentException("La media no puede ser negativa.");
+		}
 		this.nombre = nombre;
 		this.media = media;
 	}
@@ -40,18 +48,28 @@ public class Alumno {
 	 * Establece el nombre del alumno.
 	 * 
 	 * @param nombre El nuevo nombre del alumno.
+	 * @throws IllegalArgumentException si el nombre está vacío
 	 */
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		if (nombre != null && !nombre.isEmpty()) {
+			this.nombre = nombre;
+		} else {
+			throw new IllegalArgumentException("El nombre no puede estar vacío.");
+		}
 	}
 
 	/**
 	 * Establece la media del alumno.
 	 * 
 	 * @param media La nueva media del alumno.
+	 * @throws IllegalArgumentException si la media es negativa
 	 */
 	public void setMedia(double media) {
-		this.media = media;
+		if (media >= 0) {
+			this.media = media;
+		} else {
+			throw new IllegalArgumentException("La media no puede ser negativa.");
+		}
 	}
 
 	@Override
@@ -61,7 +79,7 @@ public class Alumno {
 	 * @return Una cadena con los datos del alumno.
 	 */
 	public String toString() {
-		return nombre + " " + media;
+		return "Nombre: " + nombre + ", Media: " + media;
 	}
 
 	@Override
@@ -75,7 +93,7 @@ public class Alumno {
 		boolean equivalentes = false;
 		if (objeto instanceof Alumno) {
 			Alumno a1 = (Alumno) objeto;
-			equivalentes = this.nombre.equals(a1.nombre);
+			equivalentes = this.nombre.equals(a1.nombre) && this.media == a1.media;
 		}
 		return equivalentes;
 	}

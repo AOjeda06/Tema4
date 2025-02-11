@@ -23,8 +23,15 @@ public class Libro {
 	 * 
 	 * @param titulo El título del libro.
 	 * @param autor  El autor del libro.
+	 * @throws IllegalArgumentException si el título o el autor están vacíos
 	 */
 	public Libro(String titulo, String autor) {
+		if (titulo == null || titulo.isEmpty()) {
+			throw new IllegalArgumentException("El título no puede estar vacío.");
+		}
+		if (autor == null || autor.isEmpty()) {
+			throw new IllegalArgumentException("El autor no puede estar vacío.");
+		}
 		this.titulo = titulo;
 		this.autor = autor;
 	}
@@ -37,8 +44,25 @@ public class Libro {
 	 * @param autor         El autor del libro.
 	 * @param numEjemplares El número total de ejemplares del libro.
 	 * @param prestados     La cantidad de ejemplares prestados del libro.
+	 * @throws IllegalArgumentException si el título o el autor están vacíos, el
+	 *                                  número de ejemplares es negativo o la
+	 *                                  cantidad de ejemplares prestados es mayor al
+	 *                                  total de ejemplares
 	 */
 	public Libro(String titulo, String autor, int numEjemplares, int prestados) {
+		if (titulo == null || titulo.isEmpty()) {
+			throw new IllegalArgumentException("El título no puede estar vacío.");
+		}
+		if (autor == null || autor.isEmpty()) {
+			throw new IllegalArgumentException("El autor no puede estar vacío.");
+		}
+		if (numEjemplares < 0) {
+			throw new IllegalArgumentException("El número de ejemplares no puede ser negativo.");
+		}
+		if (prestados < 0 || prestados > numEjemplares) {
+			throw new IllegalArgumentException(
+					"La cantidad de ejemplares prestados no puede ser negativa ni mayor al número total de ejemplares.");
+		}
 		this.titulo = titulo;
 		this.autor = autor;
 		this.numEjemplares = numEjemplares;
@@ -53,8 +77,25 @@ public class Libro {
 	 * @param numEjemplares El número total de ejemplares del libro.
 	 * @param prestados     La cantidad de ejemplares prestados del libro.
 	 * @param genero        El género literario del libro.
+	 * @throws IllegalArgumentException si el título o el autor están vacíos, el
+	 *                                  número de ejemplares es negativo o la
+	 *                                  cantidad de ejemplares prestados es mayor al
+	 *                                  total de ejemplares
 	 */
 	public Libro(String titulo, String autor, int numEjemplares, int prestados, generos genero) {
+		if (titulo == null || titulo.isEmpty()) {
+			throw new IllegalArgumentException("El título no puede estar vacío.");
+		}
+		if (autor == null || autor.isEmpty()) {
+			throw new IllegalArgumentException("El autor no puede estar vacío.");
+		}
+		if (numEjemplares < 0) {
+			throw new IllegalArgumentException("El número de ejemplares no puede ser negativo.");
+		}
+		if (prestados < 0 || prestados > numEjemplares) {
+			throw new IllegalArgumentException(
+					"La cantidad de ejemplares prestados no puede ser negativa ni mayor al número total de ejemplares.");
+		}
 		this.titulo = titulo;
 		this.autor = autor;
 		this.numEjemplares = numEjemplares;
@@ -111,36 +152,59 @@ public class Libro {
 	 * Establece el título del libro.
 	 * 
 	 * @param titulo El nuevo título del libro.
+	 * @throws IllegalArgumentException si el título está vacío
 	 */
 	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+		if (titulo != null && !titulo.isEmpty()) {
+			this.titulo = titulo;
+		} else {
+			throw new IllegalArgumentException("El título no puede estar vacío.");
+		}
 	}
 
 	/**
 	 * Establece el autor del libro.
 	 * 
 	 * @param autor El nuevo autor del libro.
+	 * @throws IllegalArgumentException si el autor está vacío
 	 */
 	public void setAutor(String autor) {
-		this.autor = autor;
+		if (autor != null && !autor.isEmpty()) {
+			this.autor = autor;
+		} else {
+			throw new IllegalArgumentException("El autor no puede estar vacío.");
+		}
 	}
 
 	/**
 	 * Establece el número total de ejemplares del libro.
 	 * 
 	 * @param numEjemplares El nuevo número total de ejemplares del libro.
+	 * @throws IllegalArgumentException si el número de ejemplares es negativo
 	 */
 	public void setNumEjemplares(int numEjemplares) {
-		this.numEjemplares = numEjemplares;
+		if (numEjemplares >= 0) {
+			this.numEjemplares = numEjemplares;
+		} else {
+			throw new IllegalArgumentException("El número de ejemplares no puede ser negativo.");
+		}
 	}
 
 	/**
 	 * Establece la cantidad de ejemplares prestados del libro.
 	 * 
 	 * @param prestados La nueva cantidad de ejemplares prestados del libro.
+	 * @throws IllegalArgumentException si la cantidad de ejemplares prestados es
+	 *                                  negativa o mayor al número total de
+	 *                                  ejemplares
 	 */
 	public void setPrestados(int prestados) {
-		this.prestados = prestados;
+		if (prestados >= 0 && prestados <= numEjemplares) {
+			this.prestados = prestados;
+		} else {
+			throw new IllegalArgumentException(
+					"La cantidad de ejemplares prestados no puede ser negativa ni mayor al número total de ejemplares.");
+		}
 	}
 
 	/**
