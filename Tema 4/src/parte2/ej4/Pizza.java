@@ -5,28 +5,28 @@ package parte2.ej4;
  */
 public class Pizza {
 	int codigo;
-	tamaños tamaño;
-	tipos tipo;
-	estados estado;
+	TamañosTipo tamaño;
+	TiposTipo tipo;
+	EstadosTipo estado;
 
 	/**
 	 * Enumeración que representa los diferentes tamaños de pizza.
 	 */
-	enum tamaños {
+	enum TamañosTipo {
 		MEDIANA, FAMILIAR
 	}
 
 	/**
 	 * Enumeración que representa los diferentes tipos de pizza.
 	 */
-	enum tipos {
+	enum TiposTipo {
 		MARGARITA, CUATROQUESOS, FUNGHI
 	}
 
 	/**
 	 * Enumeración que representa los diferentes estados de una pizza.
 	 */
-	enum estados {
+	enum EstadosTipo {
 		PEDIDA, SERVIDA
 	}
 
@@ -38,14 +38,14 @@ public class Pizza {
 	 * @param tipo   El tipo de la pizza.
 	 * @throws IllegalArgumentException si el código es negativo
 	 */
-	public Pizza(int codigo, tamaños tamaño, tipos tipo) {
+	public Pizza(int codigo, TamañosTipo tamaño, TiposTipo tipo) {
 		if (codigo < 0) {
 			throw new IllegalArgumentException("El código no puede ser negativo.");
 		}
 		this.codigo = codigo;
 		this.tamaño = tamaño;
 		this.tipo = tipo;
-		this.estado = estados.PEDIDA;
+		this.estado = EstadosTipo.PEDIDA;
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class Pizza {
 	 * 
 	 * @return El tamaño de la pizza.
 	 */
-	public tamaños getTamaño() {
+	public TamañosTipo getTamaño() {
 		return tamaño;
 	}
 
@@ -85,7 +85,7 @@ public class Pizza {
 	 * 
 	 * @param tamaño El nuevo tamaño de la pizza.
 	 */
-	public void setTamaño(tamaños tamaño) {
+	public void setTamaño(TamañosTipo tamaño) {
 		this.tamaño = tamaño;
 	}
 
@@ -94,7 +94,7 @@ public class Pizza {
 	 * 
 	 * @return El tipo de la pizza.
 	 */
-	public tipos getTipo() {
+	public TiposTipo getTipo() {
 		return tipo;
 	}
 
@@ -103,7 +103,7 @@ public class Pizza {
 	 * 
 	 * @param tipo El nuevo tipo de la pizza.
 	 */
-	public void setTipo(tipos tipo) {
+	public void setTipo(TiposTipo tipo) {
 		this.tipo = tipo;
 	}
 
@@ -112,7 +112,7 @@ public class Pizza {
 	 * 
 	 * @return El estado de la pizza.
 	 */
-	public estados getEstado() {
+	public EstadosTipo getEstado() {
 		return estado;
 	}
 
@@ -121,7 +121,7 @@ public class Pizza {
 	 * 
 	 * @param estado El nuevo estado de la pizza.
 	 */
-	public void setEstado(estados estado) {
+	public void setEstado(EstadosTipo estado) {
 		this.estado = estado;
 	}
 

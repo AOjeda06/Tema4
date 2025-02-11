@@ -9,12 +9,12 @@ public class Libro {
 	String autor;
 	int numEjemplares;
 	int prestados;
-	generos genero;
+	GenerosTipo genero;
 
 	/**
 	 * Enumeración que representa los diferentes géneros literarios.
 	 */
-	enum generos {
+	enum GenerosTipo {
 		NARRATIVO, LIRICO, DRAMATICO, DIDACTICO, POETICO
 	}
 
@@ -82,7 +82,7 @@ public class Libro {
 	 *                                  cantidad de ejemplares prestados es mayor al
 	 *                                  total de ejemplares
 	 */
-	public Libro(String titulo, String autor, int numEjemplares, int prestados, generos genero) {
+	public Libro(String titulo, String autor, int numEjemplares, int prestados, GenerosTipo genero) {
 		if (titulo == null || titulo.isEmpty()) {
 			throw new IllegalArgumentException("El título no puede estar vacío.");
 		}
@@ -144,7 +144,7 @@ public class Libro {
 	 * 
 	 * @return El género literario del libro.
 	 */
-	public generos getGenero() {
+	public GenerosTipo getGenero() {
 		return genero;
 	}
 
@@ -212,7 +212,7 @@ public class Libro {
 	 * 
 	 * @param genero El nuevo género literario del libro.
 	 */
-	public void setGenero(generos genero) {
+	public void setGenero(GenerosTipo genero) {
 		this.genero = genero;
 	}
 
