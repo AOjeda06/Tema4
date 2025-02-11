@@ -45,20 +45,6 @@ public class Alumno {
 	}
 
 	/**
-	 * Establece el nombre del alumno.
-	 * 
-	 * @param nombre El nuevo nombre del alumno.
-	 * @throws IllegalArgumentException si el nombre está vacío
-	 */
-	public void setNombre(String nombre) {
-		if (nombre != null && !nombre.isEmpty()) {
-			this.nombre = nombre;
-		} else {
-			throw new IllegalArgumentException("El nombre no puede estar vacío.");
-		}
-	}
-
-	/**
 	 * Establece la media del alumno.
 	 * 
 	 * @param media La nueva media del alumno.

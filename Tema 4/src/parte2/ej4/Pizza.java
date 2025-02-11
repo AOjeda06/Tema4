@@ -57,19 +57,6 @@ public class Pizza {
 		return codigo;
 	}
 
-	/**
-	 * Establece el código de la pizza.
-	 * 
-	 * @param codigo El nuevo código de la pizza.
-	 * @throws IllegalArgumentException si el código es negativo
-	 */
-	public void setCodigo(int codigo) {
-		if (codigo >= 0) {
-			this.codigo = codigo;
-		} else {
-			throw new IllegalArgumentException("El código no puede ser negativo.");
-		}
-	}
 
 	/**
 	 * Obtiene el tamaño de la pizza.
@@ -80,14 +67,6 @@ public class Pizza {
 		return tamaño;
 	}
 
-	/**
-	 * Establece el tamaño de la pizza.
-	 * 
-	 * @param tamaño El nuevo tamaño de la pizza.
-	 */
-	public void setTamaño(TamañosTipo tamaño) {
-		this.tamaño = tamaño;
-	}
 
 	/**
 	 * Obtiene el tipo de la pizza.
@@ -98,14 +77,6 @@ public class Pizza {
 		return tipo;
 	}
 
-	/**
-	 * Establece el tipo de la pizza.
-	 * 
-	 * @param tipo El nuevo tipo de la pizza.
-	 */
-	public void setTipo(TiposTipo tipo) {
-		this.tipo = tipo;
-	}
 
 	/**
 	 * Obtiene el estado de la pizza.

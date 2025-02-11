@@ -149,34 +149,6 @@ public class Libro {
 	}
 
 	/**
-	 * Establece el título del libro.
-	 * 
-	 * @param titulo El nuevo título del libro.
-	 * @throws IllegalArgumentException si el título está vacío
-	 */
-	public void setTitulo(String titulo) {
-		if (titulo != null && !titulo.isEmpty()) {
-			this.titulo = titulo;
-		} else {
-			throw new IllegalArgumentException("El título no puede estar vacío.");
-		}
-	}
-
-	/**
-	 * Establece el autor del libro.
-	 * 
-	 * @param autor El nuevo autor del libro.
-	 * @throws IllegalArgumentException si el autor está vacío
-	 */
-	public void setAutor(String autor) {
-		if (autor != null && !autor.isEmpty()) {
-			this.autor = autor;
-		} else {
-			throw new IllegalArgumentException("El autor no puede estar vacío.");
-		}
-	}
-
-	/**
 	 * Establece el número total de ejemplares del libro.
 	 * 
 	 * @param numEjemplares El nuevo número total de ejemplares del libro.
@@ -205,15 +177,6 @@ public class Libro {
 			throw new IllegalArgumentException(
 					"La cantidad de ejemplares prestados no puede ser negativa ni mayor al número total de ejemplares.");
 		}
-	}
-
-	/**
-	 * Establece el género literario del libro.
-	 * 
-	 * @param genero El nuevo género literario del libro.
-	 */
-	public void setGenero(GenerosTipo genero) {
-		this.genero = genero;
 	}
 
 	/**

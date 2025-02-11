@@ -58,29 +58,12 @@ public class Ej2 {
 
 		// Probar los métodos set
 		try {
-			Libro libro1 = new Libro("Don Quijote de la Mancha", "Miguel de Cervantes");
-			libro1.setTitulo("El ingenioso hidalgo Don Quijote de la Mancha");
-			libro1.setAutor("Cervantes");
-			System.out.println("Atributos de libro1 modificados exitosamente.");
-		} catch (IllegalArgumentException e) {
-			System.out.println("Error al modificar los atributos de libro1: " + e.getMessage());
-		}
-
-		try {
 			Libro libro2 = new Libro("Cien Años de Soledad", "Gabriel García Márquez", 10, 2);
 			libro2.setNumEjemplares(15);
 			libro2.setPrestados(3);
 			System.out.println("Atributos de libro2 modificados exitosamente.");
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error al modificar los atributos de libro2: " + e.getMessage());
-		}
-
-		try {
-			Libro libro3 = new Libro("La Odisea", "Homero", 5, 1, Libro.GenerosTipo.NARRATIVO);
-			libro3.setGenero(Libro.GenerosTipo.POETICO);
-			System.out.println("Atributos de libro3 modificados exitosamente.");
-		} catch (IllegalArgumentException e) {
-			System.out.println("Error al modificar los atributos de libro3: " + e.getMessage());
 		}
 
 		// Probar los métodos prestamo y devolucion

@@ -41,24 +41,22 @@ public class Ej3 {
 			}
 		}
 
-		// Probar los métodos set
+		// Probar el método setMedia
 		if (alumno1 != null) {
 			try {
-				alumno1.setNombre("Juanito Pérez");
 				alumno1.setMedia(9.5);
-				System.out.println("Atributos de alumno1 modificados exitosamente.");
+				System.out.println("Media de alumno1 modificada exitosamente.");
 			} catch (IllegalArgumentException e) {
-				System.out.println("Error al modificar los atributos de alumno1: " + e.getMessage());
+				System.out.println("Error al modificar la media de alumno1: " + e.getMessage());
 			}
 		}
 
 		if (alumno2 != null) {
 			try {
-				alumno2.setNombre("María Luisa López");
 				alumno2.setMedia(9.8);
-				System.out.println("Atributos de alumno2 modificados exitosamente.");
+				System.out.println("Media de alumno2 modificada exitosamente.");
 			} catch (IllegalArgumentException e) {
-				System.out.println("Error al modificar los atributos de alumno2: " + e.getMessage());
+				System.out.println("Error al modificar la media de alumno2: " + e.getMessage());
 			}
 		}
 
@@ -67,7 +65,7 @@ public class Ej3 {
 			try {
 				System.out.println(alumno1.toString());
 			} catch (IllegalArgumentException e) {
-				System.out.println("Error al crear alumno1 modificado: " + e.getMessage());
+				System.out.println("Error al mostrar alumno1 modificado: " + e.getMessage());
 			}
 		}
 
@@ -75,7 +73,7 @@ public class Ej3 {
 			try {
 				System.out.println(alumno2.toString());
 			} catch (IllegalArgumentException e) {
-				System.out.println("Error al crear alumno2 modificado: " + e.getMessage());
+				System.out.println("Error al mostrar alumno2 modificado: " + e.getMessage());
 			}
 		}
 
