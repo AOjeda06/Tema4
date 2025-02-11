@@ -204,9 +204,7 @@ public class Libro {
 		boolean equivalentes = false;
 		if (objeto instanceof Libro) {
 			Libro l1 = (Libro) objeto;
-			equivalentes = this.titulo.equals(l1.titulo) && this.autor.equals(l1.autor)
-					&& this.numEjemplares == l1.numEjemplares && this.prestados == l1.prestados
-					&& this.genero.equals(l1.genero);
+			equivalentes = this.titulo.equals(l1.titulo) && this.autor.equals(l1.autor);
 		}
 		return equivalentes;
 	}

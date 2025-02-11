@@ -187,8 +187,7 @@ public class CuentaCorriente {
 		// Comprueba que objeto es de tipo CuentaCorriente
 		if (objeto instanceof CuentaCorriente) {
 			CuentaCorriente cc = (CuentaCorriente) objeto;
-			equivalentes = this.dni.equals(cc.dni) && this.nombre.equals(cc.nombre) && this.saldo == cc.saldo
-					&& this.nacionalidad == cc.nacionalidad;
+			equivalentes = this.dni.equals(cc.dni) && this.nombre.equals(cc.nombre);
 		}
 		return equivalentes;
 	}
