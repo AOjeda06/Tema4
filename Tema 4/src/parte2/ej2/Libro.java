@@ -82,7 +82,7 @@ public class Libro {
 	 *                                  cantidad de ejemplares prestados es mayor al
 	 *                                  total de ejemplares
 	 */
-	public Libro(String titulo, String autor, int numEjemplares, int prestados, GenerosTipo genero) {
+	public Libro(String titulo, String autor, int numEjemplares, int prestados, String genero) {
 		if (titulo == null || titulo.isEmpty()) {
 			throw new IllegalArgumentException("El título no puede estar vacío.");
 		}
@@ -100,7 +100,11 @@ public class Libro {
 		this.autor = autor;
 		this.numEjemplares = numEjemplares;
 		this.prestados = prestados;
-		this.genero = genero;
+
+		if (genero == null || genero.isEmpty()) {
+			throw new IllegalArgumentException("El genero no puede estar vacio");
+		}
+		this.genero = GenerosTipo.valueOf(genero.toUpperCase());
 	}
 
 	/**
@@ -144,8 +148,8 @@ public class Libro {
 	 * 
 	 * @return El género literario del libro.
 	 */
-	public GenerosTipo getGenero() {
-		return genero;
+	public String getGenero() {
+		return String.valueOf(genero);
 	}
 
 	/**

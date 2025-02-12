@@ -70,7 +70,7 @@ public class CuentaCorriente {
 	 * @throws IllegalArgumentException si el DNI o el nombre están vacíos o el
 	 *                                  saldo es negativo
 	 */
-	public CuentaCorriente(String dni, String nombre, double saldo, nacion nacionalidad) {
+	public CuentaCorriente(String dni, String nombre, double saldo, String nacionalidad) {
 		if (dni == null || dni.isEmpty()) {
 			throw new IllegalArgumentException("DNI no puede estar vacío.");
 		}
@@ -83,7 +83,7 @@ public class CuentaCorriente {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.saldo = saldo;
-		this.nacionalidad = nacionalidad;
+		this.nacionalidad = nacion.valueOf(nacionalidad.toUpperCase());
 	}
 
 	/**
@@ -118,8 +118,8 @@ public class CuentaCorriente {
 	 *
 	 * @return la nacionalidad del titular de la cuenta
 	 */
-	public nacion getNacionalidad() {
-		return nacionalidad;
+	public String getNacionalidad() {
+		return String.valueOf(nacionalidad);
 	}
 
 	/**
@@ -127,8 +127,11 @@ public class CuentaCorriente {
 	 *
 	 * @param nacionalidad la nacionalidad del titular de la cuenta
 	 */
-	public void setNacionalidad(nacion nacionalidad) {
-		this.nacionalidad = nacionalidad;
+	public void setNacionalidad(String nacionalidad) {
+		if (nacionalidad == null || nacionalidad.isEmpty()) {
+			throw new IllegalArgumentException("Nacionalidad no puede estar vacío.");
+		}
+		this.nacionalidad = nacion.valueOf(nacionalidad);
 	}
 
 	/**

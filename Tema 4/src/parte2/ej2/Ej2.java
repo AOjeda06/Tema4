@@ -20,7 +20,7 @@ public class Ej2 {
 		}
 
 		try {
-			Libro libro3 = new Libro("La Odisea", "Homero", 5, 1, Libro.GenerosTipo.NARRATIVO);
+			Libro libro3 = new Libro("La Odisea", "Homero", 5, 1, "NARRATIVO");
 			System.out.println("Libro3 creado exitosamente.");
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error al crear libro3: " + e.getMessage());
@@ -46,7 +46,7 @@ public class Ej2 {
 		}
 
 		try {
-			Libro libro3 = new Libro("La Odisea", "Homero", 5, 1, Libro.GenerosTipo.NARRATIVO);
+			Libro libro3 = new Libro("La Odisea", "Homero", 5, 1, "NARRATIVO");
 			System.out.println("Titulo libro3: " + libro3.getTitulo());
 			System.out.println("Autor libro3: " + libro3.getAutor());
 			System.out.println("Num. Ejemplares libro3: " + libro3.getNumEjemplares());
@@ -77,8 +77,8 @@ public class Ej2 {
 
 		// Probar el método equals
 		try {
-			Libro libro3 = new Libro("La Odisea", "Homero", 5, 1, Libro.GenerosTipo.NARRATIVO);
-			Libro libro4 = new Libro("La Odisea", "Homero", 5, 1, Libro.GenerosTipo.NARRATIVO);
+			Libro libro3 = new Libro("La Odisea", "Homero", 5, 1, "NARRATIVO");
+			Libro libro4 = new Libro("La Odisea", "Homero", 5, 1, "NARRATIVO");
 			System.out.println("\n¿Libro3 es igual a Libro4? " + (libro3.equals(libro4) ? "Sí" : "No"));
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error al comparar libros: " + e.getMessage());

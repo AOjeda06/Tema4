@@ -38,13 +38,22 @@ public class Pizza {
 	 * @param tipo   El tipo de la pizza.
 	 * @throws IllegalArgumentException si el código es negativo
 	 */
-	public Pizza(int codigo, TamañosTipo tamaño, TiposTipo tipo) {
+	public Pizza(int codigo, String tamaño, String tipo) {
 		if (codigo < 0) {
 			throw new IllegalArgumentException("El código no puede ser negativo.");
 		}
 		this.codigo = codigo;
-		this.tamaño = tamaño;
-		this.tipo = tipo;
+
+		if (tamaño == null || tamaño.isEmpty()) {
+			throw new IllegalArgumentException("El tamaño no puede estar vacio.");
+		}
+		this.tamaño = TamañosTipo.valueOf(tamaño.toUpperCase());
+
+		if (tipo == null || tipo.isEmpty()) {
+			throw new IllegalArgumentException("El tipo no puede estar vacio.");
+		}
+		this.tipo = TiposTipo.valueOf(tamaño.toUpperCase());
+
 		this.estado = EstadosTipo.PEDIDA;
 	}
 
@@ -62,8 +71,8 @@ public class Pizza {
 	 * 
 	 * @return El tamaño de la pizza.
 	 */
-	public TamañosTipo getTamaño() {
-		return tamaño;
+	public String getTamaño() {
+		return String.valueOf(tamaño);
 	}
 
 	/**
@@ -71,8 +80,8 @@ public class Pizza {
 	 * 
 	 * @return El tipo de la pizza.
 	 */
-	public TiposTipo getTipo() {
-		return tipo;
+	public String getTipo() {
+		return String.valueOf(tipo);
 	}
 
 	/**
@@ -80,8 +89,8 @@ public class Pizza {
 	 * 
 	 * @return El estado de la pizza.
 	 */
-	public EstadosTipo getEstado() {
-		return estado;
+	public String getEstado() {
+		return String.valueOf(estado);
 	}
 
 	/**
@@ -89,8 +98,11 @@ public class Pizza {
 	 * 
 	 * @param estado El nuevo estado de la pizza.
 	 */
-	public void setEstado(EstadosTipo estado) {
-		this.estado = estado;
+	public void setEstado(String estado) {
+		if (estado == null || estado.isEmpty()) {
+			throw new IllegalArgumentException("El tipo no puede estar vacio.");
+		}
+		this.estado = EstadosTipo.valueOf(estado.toUpperCase());
 	}
 
 	@Override

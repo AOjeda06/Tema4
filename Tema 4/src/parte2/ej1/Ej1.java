@@ -10,8 +10,7 @@ public class Ej1 {
 			@SuppressWarnings("unused")
 			CuentaCorriente cuenta2 = new CuentaCorriente("87654321B", "Juan Pérez", 2000.0);
 			@SuppressWarnings("unused")
-			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0,
-					CuentaCorriente.nacion.EXTRANJERA);
+			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0, "EXTRANJERA");
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error al crear una cuenta corriente: " + e.getMessage());
 		}
@@ -32,12 +31,28 @@ public class Ej1 {
 		}
 
 		try {
-			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0,
-					CuentaCorriente.nacion.EXTRANJERA);
+			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0, "EXTRANJERA");
 			System.out.println("Cuenta3 Saldo: " + cuenta3.getSaldo());
 			System.out.println("Cuenta3 Nacionalidad: " + cuenta3.getNacionalidad());
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error al obtener los datos de cuenta3: " + e.getMessage());
+		}
+
+		// Probar setters
+		try {
+			CuentaCorriente cuenta1 = new CuentaCorriente("12345678A", 1000.0);
+			cuenta1.setNacionalidad("EXTRANJERA");
+			System.out.println("Cuenta1 Nacionalidad después de usar setNacionalidad: " + cuenta1.getNacionalidad());
+		} catch (IllegalArgumentException e) {
+			System.out.println("Error al usar setNacionalidad en cuenta1: " + e.getMessage());
+		}
+
+		try {
+			CuentaCorriente cuenta2 = new CuentaCorriente("87654321B", "Juan Pérez", 2000.0);
+			cuenta2.setNacionalidad("ESPAÑOLA");
+			System.out.println("Cuenta2 Nacionalidad después de usar setNacionalidad: " + cuenta2.getNacionalidad());
+		} catch (IllegalArgumentException e) {
+			System.out.println("Error al usar setNacionalidad en cuenta2: " + e.getMessage());
 		}
 
 		// Probar sacarDinero
@@ -56,8 +71,7 @@ public class Ej1 {
 
 		// Probar ingresarDinero
 		try {
-			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0,
-					CuentaCorriente.nacion.EXTRANJERA);
+			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0, "EXTRANJERA");
 			boolean resultadoIngresar = cuenta3.ingresarDinero(500.0);
 			System.out.println("\nIngresar dinero en cuenta3 (500.0): " + resultadoIngresar + ", Saldo actual: "
 					+ cuenta3.getSaldo());
@@ -72,13 +86,11 @@ public class Ej1 {
 		// Probar equals
 		try {
 			CuentaCorriente cuenta2 = new CuentaCorriente("87654321B", "Juan Pérez", 2000.0);
-			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0,
-					CuentaCorriente.nacion.EXTRANJERA);
+			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0, "EXTRANJERA");
 			boolean sonIguales = cuenta2.equals(cuenta3);
 			System.out.println("\n¿Cuenta2 y cuenta3 son iguales?: " + sonIguales);
 
-			CuentaCorriente cuenta4 = new CuentaCorriente("87654321B", "Juan Pérez", 2000.0,
-					CuentaCorriente.nacion.ESPAÑOLA);
+			CuentaCorriente cuenta4 = new CuentaCorriente("87654321B", "Juan Pérez", 2000.0, "ESPAÑOLA");
 			sonIguales = cuenta2.equals(cuenta4);
 			System.out.println("¿Cuenta2 y cuenta4 son iguales?: " + sonIguales);
 		} catch (IllegalArgumentException e) {
@@ -89,8 +101,7 @@ public class Ej1 {
 		try {
 			CuentaCorriente cuenta1 = new CuentaCorriente("12345678A", 1000.0);
 			CuentaCorriente cuenta2 = new CuentaCorriente("87654321B", "Juan Pérez", 2000.0);
-			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0,
-					CuentaCorriente.nacion.EXTRANJERA);
+			CuentaCorriente cuenta3 = new CuentaCorriente("12344321C", "Ana García", 3000.0, "EXTRANJERA");
 			System.out.println("\nInformación de cuenta1: " + cuenta1.toString());
 			System.out.println("Información de cuenta2: " + cuenta2.toString());
 			System.out.println("Información de cuenta3: " + cuenta3.toString());

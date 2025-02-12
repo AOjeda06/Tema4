@@ -9,14 +9,14 @@ public class Ej4 {
 
 		// Crear instancias de Pizza usando el constructor
 		try {
-			pizza1 = new Pizza(1, Pizza.TamañosTipo.MEDIANA, Pizza.TiposTipo.MARGARITA);
+			pizza1 = new Pizza(1, "MEDIANA", "MARGARITA");
 			System.out.println("Pizza1 creada exitosamente.");
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error al crear pizza1: " + e.getMessage());
 		}
 
 		try {
-			pizza2 = new Pizza(2, Pizza.TamañosTipo.FAMILIAR, Pizza.TiposTipo.CUATROQUESOS);
+			pizza2 = new Pizza(2, "FAMILIAR", "CUATROQUESOS");
 			System.out.println("Pizza2 creada exitosamente.");
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error al crear pizza2: " + e.getMessage());
@@ -39,12 +39,12 @@ public class Ej4 {
 
 		// Probar los métodos set
 		if (pizza1 != null) {
-			pizza1.setEstado(Pizza.EstadosTipo.SERVIDA);
+			pizza1.setEstado("SERVIDA");
 			System.out.println("Atributos de pizza1 modificados exitosamente.");
 		}
 
 		if (pizza2 != null) {
-			pizza2.setEstado(Pizza.EstadosTipo.SERVIDA);
+			pizza2.setEstado("SERVIDA");
 			System.out.println("Atributos de pizza2 modificados exitosamente.");
 		}
 
@@ -59,14 +59,14 @@ public class Ej4 {
 
 		// Probar el método equals
 		if (pizza2 != null) {
-			Pizza pizza3 = new Pizza(4, Pizza.TamañosTipo.MEDIANA, Pizza.TiposTipo.MARGARITA);
-			pizza3.setEstado(Pizza.EstadosTipo.SERVIDA);
+			Pizza pizza3 = new Pizza(4, "MEDIANA", "MARGARITA");
+			pizza3.setEstado("SERVIDA");
 			System.out.println("\n¿Pizza2 es igual a Pizza3? " + (pizza2.equals(pizza3) ? "Sí" : "No"));
 		}
 
 		// Crear instancias con datos inválidos para probar control de errores
 		try {
-			Pizza pizzaInvalida1 = new Pizza(-1, Pizza.TamañosTipo.MEDIANA, Pizza.TiposTipo.MARGARITA);
+			Pizza pizzaInvalida1 = new Pizza(-1, "MEDIANA", "MARGARITA");
 		} catch (IllegalArgumentException e) {
 			System.out.println("Error al crear pizza con código negativo: " + e.getMessage());
 		}
