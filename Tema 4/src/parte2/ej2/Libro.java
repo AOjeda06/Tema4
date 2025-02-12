@@ -5,11 +5,11 @@ package parte2.ej2;
  */
 public class Libro {
 
-	String titulo;
-	String autor;
-	int numEjemplares;
-	int prestados;
-	GenerosTipo genero;
+	private String titulo;
+	private String autor;
+	private int numEjemplares;
+	private int prestados;
+	private GenerosTipo genero;
 
 	/**
 	 * Enumeración que representa los diferentes géneros literarios.

@@ -4,10 +4,10 @@ package parte2.ej4;
  * Clase que representa una pizza con su código, tamaño, tipo y estado.
  */
 public class Pizza {
-	int codigo;
-	TamañosTipo tamaño;
-	TiposTipo tipo;
-	EstadosTipo estado;
+	private int codigo;
+	private TamañosTipo tamaño;
+	private TiposTipo tipo;
+	private EstadosTipo estado;
 
 	/**
 	 * Enumeración que representa los diferentes tamaños de pizza.
@@ -57,7 +57,6 @@ public class Pizza {
 		return codigo;
 	}
 
-
 	/**
 	 * Obtiene el tamaño de la pizza.
 	 * 
@@ -67,7 +66,6 @@ public class Pizza {
 		return tamaño;
 	}
 
-
 	/**
 	 * Obtiene el tipo de la pizza.
 	 * 
@@ -76,7 +74,6 @@ public class Pizza {
 	public TiposTipo getTipo() {
 		return tipo;
 	}
-
 
 	/**
 	 * Obtiene el estado de la pizza.

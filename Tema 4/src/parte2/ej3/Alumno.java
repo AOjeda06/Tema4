@@ -4,8 +4,8 @@ package parte2.ej3;
  * Clase que representa a un alumno con su nombre y media.
  */
 public class Alumno {
-	String nombre;
-	double media;
+	private String nombre;
+	private double media;
 
 	/**
 	 * Constructor para crear un alumno con su nombre y media.
