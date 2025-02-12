@@ -40,17 +40,6 @@ public class Ej1 {
 			System.out.println("Error al obtener los datos de cuenta3: " + e.getMessage());
 		}
 
-		// Probar setters
-		try {
-			CuentaCorriente cuenta1 = new CuentaCorriente("12345678A", 1000.0);
-			cuenta1.setNombre("Luis Rodríguez");
-			cuenta1.setSaldo(1500.0);
-			cuenta1.setNacionalidad(CuentaCorriente.nacion.EXTRANJERA);
-			System.out.println("\nCuenta1 después de usar setters: " + cuenta1.toString());
-		} catch (IllegalArgumentException e) {
-			System.out.println("Error al usar setters en cuenta1: " + e.getMessage());
-		}
-
 		// Probar sacarDinero
 		try {
 			CuentaCorriente cuenta2 = new CuentaCorriente("87654321B", "Juan Pérez", 2000.0);

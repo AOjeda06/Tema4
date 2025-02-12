@@ -96,19 +96,6 @@ public class CuentaCorriente {
 	}
 
 	/**
-	 * Establece el DNI del titular de la cuenta.
-	 *
-	 * @param dni el DNI del titular de la cuenta
-	 */
-	public void setDni(String dni) {
-		if (dni != null && !dni.isEmpty()) {
-			this.dni = dni;
-		} else {
-			throw new IllegalArgumentException("DNI no puede estar vacío.");
-		}
-	}
-
-	/**
 	 * Devuelve el nombre del titular de la cuenta.
 	 *
 	 * @return el nombre del titular de la cuenta
@@ -118,38 +105,12 @@ public class CuentaCorriente {
 	}
 
 	/**
-	 * Establece el nombre del titular de la cuenta.
-	 *
-	 * @param nombre el nombre del titular de la cuenta
-	 */
-	public void setNombre(String nombre) {
-		if (nombre != null && !nombre.isEmpty()) {
-			this.nombre = nombre;
-		} else {
-			throw new IllegalArgumentException("Nombre no puede estar vacío.");
-		}
-	}
-
-	/**
 	 * Devuelve el saldo de la cuenta.
 	 *
 	 * @return el saldo de la cuenta
 	 */
 	public double getSaldo() {
 		return saldo;
-	}
-
-	/**
-	 * Establece el saldo de la cuenta.
-	 *
-	 * @param saldo el saldo de la cuenta
-	 */
-	public void setSaldo(double saldo) {
-		if (saldo >= 0) {
-			this.saldo = saldo;
-		} else {
-			throw new IllegalArgumentException("Saldo no puede ser negativo.");
-		}
 	}
 
 	/**
