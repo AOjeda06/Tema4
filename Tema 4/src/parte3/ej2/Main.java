@@ -3,8 +3,11 @@ package parte3.ej2;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Media de 2 enteros
+		System.out.println(Ej2.media(5, 6));
 
+		// Media de 3 enteros
+		System.out.println(Ej2.media(5, 6, 24));
 	}
 
 }
