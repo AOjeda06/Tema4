@@ -41,17 +41,38 @@ public class Ej1 {
 		String nombre;
 		double media;
 
-		System.out.println("Indica el nombre: ");
-		nombre = scanner.nextLine();
-		scanner.nextLine();
+		nombre = pedirNombre();
 
-		System.out.println("Indica la media: ");
-		media = scanner.nextDouble();
-		scanner.nextLine();
+		media = pedirMedia();
 
 		Alumno nuevoAlumno = new Alumno(nombre, media);
 
 		CRUD.añadirObjeto(nuevoAlumno);
+		System.out.println("Alumno añadido correctamente");
+	}
+
+	/**
+	 * 
+	 * @return Devuelve la media
+	 */
+	private static double pedirMedia() {
+		double media;
+		System.out.println("Indica la media: ");
+		media = scanner.nextDouble();
+		scanner.nextLine();
+		return media;
+	}
+
+	/**
+	 * 
+	 * @return Devuelve el nombre
+	 */
+	private static String pedirNombre() {
+		String nombre;
+		System.out.println("Indica el nombre: ");
+		nombre = scanner.nextLine();
+		scanner.nextLine();
+		return nombre;
 	}
 
 	/**
@@ -60,20 +81,15 @@ public class Ej1 {
 	public static void modificar() {
 		String nombre;
 		double media;
-		Alumno buscado;
 
-		System.out.println("Indica el nombre: ");
-		nombre = scanner.nextLine();
-		scanner.nextLine();
+		nombre = pedirNombre();
 
 		if (CRUD.buscarAlumno(nombre) != null) {
-			buscado = CRUD.buscarAlumno(nombre);
+			media = pedirMedia();
 
-			System.out.println("Indica la nueva media: ");
-			media = scanner.nextDouble();
-			scanner.nextLine();
-
-			buscado.setMedia(media);
+			if (CRUD.buscarAlumnoYModificar(nombre, media)) {
+				System.out.println("Datos modificados correctamente");
+			}
 
 		} else {
 			System.out.println("El alumno no existe");
@@ -86,12 +102,11 @@ public class Ej1 {
 	public static void eliminar() {
 		String nombre;
 
-		System.out.println("Indica el nombre: ");
-		nombre = scanner.nextLine();
-		scanner.nextLine();
+		nombre = pedirNombre();
 		if (CRUD.buscarAlumno(nombre) != null) {
 
 			CRUD.borrarAlumno(nombre);
+			System.out.println("Alumno borrado correctamente");
 
 		} else {
 			System.out.println("El alumno no existe");

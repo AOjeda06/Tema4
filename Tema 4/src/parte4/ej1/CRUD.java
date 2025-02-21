@@ -1,11 +1,10 @@
 package parte4.ej1;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 import parte2.ej3.Alumno;
 
 public class CRUD {
-	static Scanner scanner = new Scanner(System.in);
 
 	static private ArrayList<Alumno> ListaAlumnos = new ArrayList<>();
 
@@ -41,6 +40,20 @@ public class CRUD {
 			}
 		}
 		return buscado;
+	}
+
+	public static boolean buscarAlumnoYModificar(String nombre, double media) {
+		boolean res = false;
+		Alumno buscado = null;
+		for (Alumno elemento : ListaAlumnos) {
+			if (elemento.getNombre().equals(nombre)) {
+				buscado = elemento;
+				res = true;
+			}
+		}
+
+		buscado.setMedia(media);
+		return res;
 	}
 
 	/**
