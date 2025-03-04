@@ -1,4 +1,4 @@
-package parte4.ej5;
+package crud.ej5;
 
 import java.util.Scanner;
 import parte2.ej1.CuentaCorriente;
