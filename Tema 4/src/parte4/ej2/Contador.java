@@ -67,12 +67,8 @@ public class Contador {
 	 *         contrario.
 	 */
 	public boolean equals(Object obj) {
-		boolean eq = false;
-
 		Contador c = (Contador) obj;
 
-		eq = this.cont == c.cont;
-
-		return eq;
+		return this.cont == c.cont;
 	}
 }
