@@ -17,10 +17,6 @@ public class Ej3 {
 			System.out.println("Mes de Fecha 1: " + fecha1.getMes());
 			System.out.println("Año de Fecha 1: " + fecha1.getAno());
 
-			// Prueba de método esBisiesto
-			System.out.println("¿El año de Fecha 1 es bisiesto?: " + fecha1.esBisiesto());
-			System.out.println("¿El año de Fecha 2 es bisiesto?: " + fecha2.esBisiesto());
-
 			// Prueba de método diaSiguiente
 			fecha1.diaSiguiente();
 			System.out.println("Día siguiente de Fecha 1: " + fecha1);

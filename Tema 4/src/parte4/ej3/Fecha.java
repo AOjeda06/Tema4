@@ -25,41 +25,57 @@ public class Fecha {
 	 *                                  mes correspondiente
 	 */
 	Fecha(int dia, int mes, int ano) {
-		if (mes < 1 || mes > 12) {
-			throw new IllegalArgumentException("Mes no válido.");
+		if (!fechaCorrecta(dia, mes, ano)) {
+			throw new IllegalArgumentException("Fecha no válida.");
 		}
+
 		this.mes = mes;
-
-		if (ano < 0) {
-			throw new IllegalArgumentException("Sólo años d.C.");
-		}
 		this.ano = ano;
+		this.dia = dia;
+	}
 
+	/**
+	 * Verifica si una fecha es correcta.
+	 *
+	 * @param dia el día de la fecha
+	 * @param mes el mes de la fecha
+	 * @param ano el año de la fecha
+	 * @return true si la fecha es correcta, false en caso contrario
+	 */
+	private boolean fechaCorrecta(int dia, int mes, int ano) {
+		boolean correcto = true;
+
+		if (mes < 1 || mes > 12) {
+			correcto = false;
+		}
+		if (ano < 0) {
+			correcto = false;
+		}
 		switch (mes) {
 		case 1, 3, 5, 7, 8, 10, 12 -> {
 			if (dia < 1 || dia > 31) {
-				throw new IllegalArgumentException("Día no válido.");
+				correcto = false;
 			}
 		}
 		case 2 -> {
-			if (esBisiesto()) {
+			if (esBisiesto(ano)) {
 				if (dia < 1 || dia > 29) {
-					throw new IllegalArgumentException("Día no válido.");
+					correcto = false;
 				}
 			} else {
 				if (dia < 1 || dia > 28) {
-					throw new IllegalArgumentException("Día no válido.");
+					correcto = false;
 				}
 			}
 		}
 		case 4, 6, 9, 11 -> {
 			if (dia < 1 || dia > 30) {
-				throw new IllegalArgumentException("Día no válido.");
+				correcto = false;
 			}
 		}
-		default -> throw new IllegalArgumentException("Mes no válido.");
 		}
-		this.dia = dia;
+
+		return correcto;
 	}
 
 	/**
@@ -92,9 +108,10 @@ public class Fecha {
 	/**
 	 * Determina si el año es bisiesto.
 	 *
+	 * @param ano el año a comprobar
 	 * @return true si el año es bisiesto, false en caso contrario
 	 */
-	public boolean esBisiesto() {
+	private boolean esBisiesto(int ano) {
 		return (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
 	}
 
@@ -112,7 +129,7 @@ public class Fecha {
 			}
 		}
 		case 2 -> {
-			if (esBisiesto()) {
+			if (esBisiesto(this.ano)) {
 				if (dia > 29) {
 					dia = 1;
 					mes++;
