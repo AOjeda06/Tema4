@@ -2,6 +2,10 @@ package examenanterior;
 
 import java.util.Scanner;
 
+/**
+ * Clase principal que contiene el menú y las funciones para gestionar
+ * empleados.
+ */
 public class Principal {
 	static Scanner scanner = new Scanner(System.in);
 
@@ -39,23 +43,16 @@ public class Principal {
 		String nombre = pedirNombre();
 		double sueldoBase = pedirSueldoBase();
 		int horasExtra = pedirHorasExtra();
-		boolean noException = false;
-
-		Empleado nuevoEmpleado = null;
 
 		try {
-			nuevoEmpleado = new Empleado(dni, nombre, sueldoBase, horasExtra);
-			noException = true;
+			Empleado nuevoEmpleado = new Empleado(dni, nombre, sueldoBase, horasExtra);
+			if (ListadoEmpleados.añadirEmpleadoNuevo(nuevoEmpleado)) {
+				System.out.println("Empleado añadido correctamente");
+			} else {
+				System.out.println("No se ha podido añadir el nuevo empleado a la base de datos");
+			}
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
-		} finally {
-			if (noException) {
-				if (ListadoEmpleados.añadirEmpleadoNuevo(nuevoEmpleado)) {
-					System.out.println("Empleado añadido correctamente");
-				} else {
-					System.out.println("No se ha podido añadir el nuevo empleado a la base de datos");
-				}
-			}
 		}
 	}
 
@@ -66,31 +63,38 @@ public class Principal {
 	public static void modificarHoras() {
 		String dni = pedirDni();
 		int horas = pedirHorasExtra();
-		boolean noException = false;
-		Empleado empleadoParaModificar = null;
 
 		try {
-			empleadoParaModificar = new Empleado(dni);
+			Empleado empleadoParaModificar = new Empleado(dni);
+			if (ListadoEmpleados.modificarHoras(empleadoParaModificar, horas)) {
+				System.out.println("Empleado modificado correctamente");
+			} else {
+				System.out.println("No se ha podido modificar los datos");
+			}
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
-		} finally {
-			if (noException) {
-				if (ListadoEmpleados.modificarHoras(empleadoParaModificar, horas)) {
-					System.out.println("Empleado modificado correctamente");
-				} else {
-					System.out.println("No se ha podido modificar los datos");
-				}
-			}
 		}
-
 	}
 
 	public static void modificarImporte() {
-
+		double importe = pedirImporte();
+		ListadoEmpleados.modificarImporteHE(importe);
+		System.out.println("Importe modificado.");
 	}
 
 	public static void eliminarEmpleado() {
+		String dni = pedirDni();
 
+		try {
+			Empleado empleadoParaEliminar = new Empleado(dni);
+			if (ListadoEmpleados.eliminarEmpleado(empleadoParaEliminar)) {
+				System.out.println("Empleado eliminado correctamente");
+			} else {
+				System.out.println("No se ha podido encontrar al empleado");
+			}
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private static String pedirNombre() {
@@ -115,10 +119,16 @@ public class Principal {
 	}
 
 	private static int pedirHorasExtra() {
-		System.out.println("Indique el numero: ");
+		System.out.println("Indique el numero de horas extra: ");
 		int horas = scanner.nextInt();
 		scanner.nextLine();
 		return horas;
 	}
 
+	private static double pedirImporte() {
+		System.out.println("Introduzca el nuevo importe: ");
+		double importe = scanner.nextDouble();
+		scanner.nextLine();
+		return importe;
+	}
 }
